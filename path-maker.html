@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Study Goal Path Generator - Plan and track your study goals with a personalized timetable." />
+    <meta name="keywords" content="study planner, goal tracker, timetable generator, education" />
+    <meta name="author" content="EduTools Team" />
+    <title>Study Goal Path Generator - EduTools</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css" />
+    <link rel="stylesheet" href="path-maker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.js"></script>
+    <script defer src="path-maker.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">Study Goal Path</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html" class="nav-link">EduTools Home</a></li>
+                <li class="theme-toggle">
+                    <label class="switch" aria-label="Toggle dark mode">
+                        <input type="checkbox" id="themeSwitch" />
+                        <span class="slider">
+                            <svg class="theme-icon sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <path
+                                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                                </path>
+                            </svg>
+                            <svg class="theme-icon moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="selector">
+                <label for="timeframe">Timeframe</label>
+                <select id="timeframe">
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                </select>
+            </div>
+            <div class="selector">
+                <label for="subjectFilter">Subject</label>
+                <select id="subjectFilter">
+                    <option value="">All Subjects</option>
+                </select>
+            </div>
+        </aside>
+
+        <main>
+            <section class="goal-input">
+                <h2>Add Study Goal</h2>
+                <div class="form">
+                    <div class="input-group">
+                        <input type="text" id="subject" required />
+                        <label>Subject</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="chapter" required />
+                        <label>Chapter</label>
+                    </div>
+                    <button class="cta" onclick="addGoal()">Add Goal</button>
+                </div>
+            </section>
+
+            <section id="goals" class="goals">
+                <h2>Your Goals</h2>
+                <div id="goalsContainer" class="grid"></div>
+            </section>
+
+            <section id="timetable" class="timetable">
+                <h2>Timetable</h2>
+                <button class="cta" onclick="generateTimetable()">Generate Timetable</button>
+                <div id="timetableContainer" class="grid"></div>
+            </section>
+
+            <section id="report" class="report">
+                <h2>Progress Report</h2>
+                <button class="cta" onclick="generateReport()">View Report</button>
+                <div id="reportContainer" class="grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <h3>Goal Report History</h3>
+            <div id="reportHistory"></div>
+            <button class="cta" onclick="closeModal()">Close</button>
+            <button class="cta" onclick="downloadReport()">Download Report</button>
+        </div>
+    </div>
+</body>
+
+</html>
