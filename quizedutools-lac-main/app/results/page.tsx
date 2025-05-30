@@ -67,10 +67,10 @@ export default function ResultsPage() {
 
   // Get feedback based on score
   const getFeedback = () => {
-    if (score >= 90) return "Excellent!"
-    if (score >= 70) return "Great job! "
-    if (score >= 50) return "Good effort!"
-    return "Keep practicing!"
+    if (score >= 90) return "Excellent! You've mastered this topic!"
+    if (score >= 70) return "Great job! You have a solid understanding."
+    if (score >= 50) return "Good effort! Keep studying to improve."
+    return "Keep practicing! You'll get better with time."
   }
 
   const handleTryAgain = () => {
@@ -78,24 +78,24 @@ export default function ResultsPage() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 md:p-24">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex flex-col items-center justify-center p-4 md:p-24">
       <div className="max-w-3xl w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold">Quiz Results</h1>
-          <p className="mt-2 text-xl">{quizData.title}</p>
+          <h1 className="text-3xl font-bold text-blue-800">Quiz Results</h1>
+          <p className="mt-2 text-xl text-blue-600">{quizData.title}</p>
         </div>
 
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="text-center">Your Score: {Math.round(score)}%</CardTitle>
+        <Card className="mb-8 shadow-lg border-blue-100">
+          <CardHeader className="bg-blue-50">
+            <CardTitle className="text-center text-blue-900">Your Score: {Math.round(score)}%</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="mb-4">
               <Progress value={score} className="h-3" />
             </div>
-            <p className="text-center text-lg">{getFeedback()}</p>
+            <p className="text-center text-lg text-blue-700">{getFeedback()}</p>
             <div className="mt-4 text-center">
-              <p>
+              <p className="text-blue-600">
                 You got {correctAnswers} out of {totalQuestions} questions correct.
               </p>
             </div>
@@ -105,14 +105,14 @@ export default function ResultsPage() {
               <RotateCcw className="mr-2 h-4 w-4" />
               Try Again
             </Button>
-            <Button onClick={() => router.push("https://edutools-lac.vercel.app")}>
+            <Button onClick={() => router.push("/")}>
               <Home className="mr-2 h-4 w-4" />
               Home
             </Button>
           </CardFooter>
         </Card>
 
-        <h2 className="text-2xl font-bold mb-4">Question Review</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blue-800">Question Review</h2>
 
         {quizData.questions.map((question, index) => {
           const userAnswer = selectedAnswers[question.id]
