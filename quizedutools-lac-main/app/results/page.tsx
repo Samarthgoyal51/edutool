@@ -105,7 +105,7 @@ export default function ResultsPage() {
               <RotateCcw className="mr-2 h-4 w-4" />
               Try Again
             </Button>
-            <Button onClick={() => router.push("/")}>
+            <Button onClick={() => router.push("hhtps://edutools-lac.vercel.app")}>
               <Home className="mr-2 h-4 w-4" />
               Home
             </Button>
