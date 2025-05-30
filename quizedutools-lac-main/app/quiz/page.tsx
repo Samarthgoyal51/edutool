@@ -103,12 +103,12 @@ export default function QuizPage() {
   const isLastQuestion = currentQuestionIndex === totalQuestions - 1
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 md:p-24">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex flex-col items-center justify-center p-4 md:p-24">
       <div className="max-w-3xl w-full">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold">{quizData.title}</h1>
+          <h1 className="text-3xl font-bold text-blue-800">{quizData.title}</h1>
           <div className="mt-4">
-            <div className="flex justify-between text-sm mb-1">
+            <div className="flex justify-between text-sm mb-1 text-blue-600">
               <span>
                 Question {currentQuestionIndex + 1} of {totalQuestions}
               </span>
@@ -118,9 +118,9 @@ export default function QuizPage() {
           </div>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl">{currentQuestion.question}</CardTitle>
+        <Card className="shadow-lg border-blue-100">
+          <CardHeader className="bg-blue-50">
+            <CardTitle className="text-xl text-blue-900">{currentQuestion.question}</CardTitle>
           </CardHeader>
           <CardContent>
             <RadioGroup value={selectedAnswers[currentQuestion.id]} onValueChange={handleAnswerSelect}>
